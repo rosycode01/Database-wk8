@@ -29,3 +29,5 @@ I created table authors and checked if successfully created
 I created table categories and checked if present
 
 I created table books.
+
+I created table book_authors with a many to many relationship.

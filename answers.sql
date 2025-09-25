@@ -1,13 +1,10 @@
 USE libraryDB;
---  Books (abstract book entry, not a physical copy)
-CREATE TABLE IF NOT EXISTS books (
-    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    isbn VARCHAR(20) UNIQUE,
-    publisher VARCHAR(200),
-    published_year YEAR,
-    pages INT UNSIGNED,
-    language VARCHAR(50),
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+--  Book-Authors (Many-to-Many)
+CREATE TABLE IF NOT EXISTS book_authors (
+    book_id BIGINT UNSIGNED NOT NULL,
+    author_id BIGINT UNSIGNED NOT NULL,
+    PRIMARY KEY (book_id, author_id),
+    FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (author_id) REFERENCES authors(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 SHOW TABLES;

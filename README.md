@@ -26,5 +26,6 @@ I created table users and checked if successfully created
 
 I created table authors and checked if successfully created
 
-
 I created table categories and checked if present
+
+I created table books.

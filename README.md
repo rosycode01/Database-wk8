@@ -37,3 +37,5 @@ I created table book_categories with many-to-many relationship
 I created table book_copies with different status available,borrowed,reserved or lost
 
 I created table loans with the id having a primary key
+
+I created table reservations which references book_copies and status of the book if borrowed.

@@ -42,4 +42,6 @@ I created table reservations which references book_copies and status of the book
 
 I created table fines which references the users_id and loans_id using a foreign key.
 
-I created table payments which references table fines using a foreign key
+I created table payments which references table fines using a foreign key.
+
+I created table reviews which references the book_id and users_id which are forein keys and are unique keys.

@@ -1,11 +1,16 @@
 USE libraryDB;
---  Payments (for fines)
-CREATE TABLE IF NOT EXISTS payments (
+--  Reviews (optional, users reviewing books)
+CREATE TABLE IF NOT EXISTS reviews (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    fine_id BIGINT UNSIGNED NOT NULL UNIQUE,
-    amount DECIMAL(10, 2) NOT NULL CHECK (amount >= 0),
-    method ENUM('cash', 'card', 'mobile_money') NOT NULL,
-    paid_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (fine_id) REFERENCES fines(id) ON DELETE CASCADE ON UPDATE CASCADE
+    book_id BIGINT UNSIGNED NOT NULL,
+    user_id BIGINT UNSIGNED NOT NULL,
+    rating TINYINT UNSIGNED NOT NULL CHECK (
+        rating BETWEEN 1 AND 5
+    ),
+    comment TEXT,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    UNIQUE KEY uq_review (book_id, user_id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 SHOW TABLES;

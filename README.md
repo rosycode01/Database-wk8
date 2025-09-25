@@ -35,3 +35,5 @@ I created table book_authors with a many to many relationship.
 I created table book_categories with many-to-many relationship
 
 I created table book_copies with different status available,borrowed,reserved or lost
+
+I created table loans with the id having a primary key

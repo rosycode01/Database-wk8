@@ -19,5 +19,8 @@ Payments/Fines
 # Database creation
 
 I created database libraryDB and switched to it
-# Table creation 
+
+# Table creation
+
 I created table users and checked if successfully created
+I created table authors and checked if successfully created

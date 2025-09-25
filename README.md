@@ -41,3 +41,5 @@ I created table loans with the id having a primary key
 I created table reservations which references book_copies and status of the book if borrowed.
 
 I created table fines which references the users_id and loans_id using a foreign key.
+
+I created table payments which references table fines using a foreign key

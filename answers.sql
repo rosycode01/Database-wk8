@@ -1,14 +1,11 @@
 USE libraryDB;
--- Fines (penalties for overdue/lost books)
-CREATE TABLE IF NOT EXISTS fines (
+--  Payments (for fines)
+CREATE TABLE IF NOT EXISTS payments (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    user_id BIGINT UNSIGNED NOT NULL,
-    loan_id BIGINT UNSIGNED NOT NULL,
+    fine_id BIGINT UNSIGNED NOT NULL UNIQUE,
     amount DECIMAL(10, 2) NOT NULL CHECK (amount >= 0),
-    status ENUM('unpaid', 'paid') NOT NULL DEFAULT 'unpaid',
-    issued_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    paid_at TIMESTAMP NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    FOREIGN KEY (loan_id) REFERENCES loans(id) ON DELETE CASCADE ON UPDATE CASCADE
+    method ENUM('cash', 'card', 'mobile_money') NOT NULL,
+    paid_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (fine_id) REFERENCES fines(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 SHOW TABLES;

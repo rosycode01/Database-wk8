@@ -1,7 +1,15 @@
--- Create the database only if it does not already exist
--- Using utf8mb4 so the database can handle any Unicode text (all languages + emojis)
--- Using utf8mb4_general_ci so comparisons are case-insensitive (e.g., 'Book' = 'book')
-CREATE DATABASE IF NOT EXISTS libraryDB DEFAULT CHARACTER SET = utf8mb4 DEFAULT COLLATE = utf8mb4_general_ci;
--- 2) Switch to the libraryDB database
--- This makes libraryDB the active database for all upcoming commands (CREATE TABLE, INSERT, etc.)
+-- Users (both librarians and members)
+CREATE TABLE IF NOT EXISTS users (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    phone VARCHAR(30) UNIQUE,
+    role ENUM('member', 'librarian') NOT NULL DEFAULT 'member',
+    password_hash VARCHAR(255) NOT NULL,
+    joined_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 USE libraryDB;
+-- switch into your database
+SHOW TABLES;
+-- checked if the table has been created

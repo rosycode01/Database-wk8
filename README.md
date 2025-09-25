@@ -39,3 +39,5 @@ I created table book_copies with different status available,borrowed,reserved or
 I created table loans with the id having a primary key
 
 I created table reservations which references book_copies and status of the book if borrowed.
+
+I created table fines which references the users_id and loans_id using a foreign key.
